@@ -36,13 +36,13 @@ func main() {
 	}
 	defer conn.Close()
 
-	cli := pb.NewLivescoreClient(conn)
+	cli := pb.NewLiveScoreClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	new := &pb.New{Type: getType(action), Min: int32(min), Team: team, Details: details}
-	r, err := cli.PublishNew(ctx, &pb.PublishNewRequest{New: new, Game: game})
+	new := &pb.News{Type: getType(action), Min: int32(min), Team: team, Details: details}
+	r, err := cli.PublishNews(ctx, &pb.PublishNewsRequest{News: new, Game: game})
 
 	if err != nil {
 		log.Printf("Error en la petición %v ", err)
@@ -52,21 +52,21 @@ func main() {
 
 }
 
-func getType(action string) pb.TypeNew {
+func getType(action string) pb.TypeNews {
 
-	typeNews := pb.TypeNew_UNKOWN
+	typeNews := pb.TypeNews_UNKOWN
 
 	switch action {
 	case "goal":
-		typeNews = pb.TypeNew_GOAL
+		typeNews = pb.TypeNews_GOAL
 	case "offside":
-		typeNews = pb.TypeNew_OFFSIDE
+		typeNews = pb.TypeNews_OFFSIDE
 	case "yellowcard":
-		typeNews = pb.TypeNew_YELLOW_CARD
+		typeNews = pb.TypeNews_YELLOW_CARD
 	case "redcard":
-		typeNews = pb.TypeNew_RED_CARD
+		typeNews = pb.TypeNews_RED_CARD
 	case "finished":
-		typeNews = pb.TypeNew_FINISHED
+		typeNews = pb.TypeNews_FINISHED
 	}
 
 	return typeNews

@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package livescore;
 
-service Livescore {
+service LiveScore {
     rpc GetGamesList (GetGamesListRequest) returns (GetGamesListResponse);
-    rpc PublishNew (PublishNewRequest) returns (PublishNewResponse);
+    rpc PublishNews (PublishNewsRequest) returns (PublishNewsResponse);
     rpc GetNewsGame (GetNewsGameRequest) returns (stream GetNewsGameResponse);
 }
 
@@ -21,21 +21,21 @@ message GetNewsGameRequest {
 }
 
 message GetNewsGameResponse {
-    New new = 1;
+    News news = 1;
 }
 
-message PublishNewRequest {
-    New new = 1;
+message PublishNewsRequest {
+    News news = 1;
     string game = 2;
 }
 
-message PublishNewResponse {
+message PublishNewsResponse {
     bool ok = 1;
 }
 
 // Genreic
 
-enum TypeNew {
+enum TypeNews {
     UNKOWN = 0;
     GOAL = 1;
     OFFSIDE = 2;
@@ -51,8 +51,8 @@ message Game {
     string country = 4;
 }
 
-message New {
-    TypeNew type = 1;
+message News {
+    TypeNews type = 1;
     string team = 2;
     int32 min = 3;
     string details = 4;

@@ -32,15 +32,15 @@ func main() {
 	}
 	defer conn.Close()
 
-	cli := pb.NewLivescoreClient(conn)
+	cli := pb.NewLiveScoreClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Minute)
 	defer cancel()
 
 	log.Printf("Will be subscribed to game: ", game)
-	newReq := &pb.GetNewsGameRequest{GameId: game}
+	newsReq := &pb.GetNewsGameRequest{GameId: game}
 
-	stream, err := cli.GetNewsGame(ctx, newReq) // Creamos nuestro cliente de streaming
+	stream, err := cli.GetNewsGame(ctx, newsReq) // Creamos nuestro cliente de streaming
 
 	if err != nil {
 		log.Printf("Error en la petición %v ", err)
@@ -48,7 +48,7 @@ func main() {
 
 	for {
 
-		new, err := stream.Recv() // Recibimos los datos que lleguen dle servidor
+		news, err := stream.Recv() // Recibimos los datos que lleguen dle servidor
 
 		if err != nil {
 
@@ -56,12 +56,12 @@ func main() {
 				log.Printf("Game finalizado")
 				break
 			} else {
-				log.Fatalf("Error recibiendo new %v ", err)
+				log.Fatalf("Error recibiendo news %v ", err)
 			}
 
 		}
 
-		log.Printf("New recibida %v ", new)
+		log.Printf("News recibida %v ", news)
 	}
 
 }

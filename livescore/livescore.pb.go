@@ -24,18 +24,18 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type TypeNew int32
+type TypeNews int32
 
 const (
-	TypeNew_UNKOWN      TypeNew = 0
-	TypeNew_GOAL        TypeNew = 1
-	TypeNew_OFFSIDE     TypeNew = 2
-	TypeNew_YELLOW_CARD TypeNew = 3
-	TypeNew_RED_CARD    TypeNew = 4
-	TypeNew_FINISHED    TypeNew = 5
+	TypeNews_UNKOWN      TypeNews = 0
+	TypeNews_GOAL        TypeNews = 1
+	TypeNews_OFFSIDE     TypeNews = 2
+	TypeNews_YELLOW_CARD TypeNews = 3
+	TypeNews_RED_CARD    TypeNews = 4
+	TypeNews_FINISHED    TypeNews = 5
 )
 
-var TypeNew_name = map[int32]string{
+var TypeNews_name = map[int32]string{
 	0: "UNKOWN",
 	1: "GOAL",
 	2: "OFFSIDE",
@@ -44,7 +44,7 @@ var TypeNew_name = map[int32]string{
 	5: "FINISHED",
 }
 
-var TypeNew_value = map[string]int32{
+var TypeNews_value = map[string]int32{
 	"UNKOWN":      0,
 	"GOAL":        1,
 	"OFFSIDE":     2,
@@ -53,11 +53,11 @@ var TypeNew_value = map[string]int32{
 	"FINISHED":    5,
 }
 
-func (x TypeNew) String() string {
-	return proto.EnumName(TypeNew_name, int32(x))
+func (x TypeNews) String() string {
+	return proto.EnumName(TypeNews_name, int32(x))
 }
 
-func (TypeNew) EnumDescriptor() ([]byte, []int) {
+func (TypeNews) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_ccd9286e45234ec8, []int{0}
 }
 
@@ -179,7 +179,7 @@ func (m *GetNewsGameRequest) GetGameId() string {
 }
 
 type GetNewsGameResponse struct {
-	New                  *New     `protobuf:"bytes,1,opt,name=new,proto3" json:"new,omitempty"`
+	News                 *News    `protobuf:"bytes,1,opt,name=news,proto3" json:"news,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -210,93 +210,93 @@ func (m *GetNewsGameResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetNewsGameResponse proto.InternalMessageInfo
 
-func (m *GetNewsGameResponse) GetNew() *New {
+func (m *GetNewsGameResponse) GetNews() *News {
 	if m != nil {
-		return m.New
+		return m.News
 	}
 	return nil
 }
 
-type PublishNewRequest struct {
-	New                  *New     `protobuf:"bytes,1,opt,name=new,proto3" json:"new,omitempty"`
+type PublishNewsRequest struct {
+	News                 *News    `protobuf:"bytes,1,opt,name=news,proto3" json:"news,omitempty"`
 	Game                 string   `protobuf:"bytes,2,opt,name=game,proto3" json:"game,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PublishNewRequest) Reset()         { *m = PublishNewRequest{} }
-func (m *PublishNewRequest) String() string { return proto.CompactTextString(m) }
-func (*PublishNewRequest) ProtoMessage()    {}
-func (*PublishNewRequest) Descriptor() ([]byte, []int) {
+func (m *PublishNewsRequest) Reset()         { *m = PublishNewsRequest{} }
+func (m *PublishNewsRequest) String() string { return proto.CompactTextString(m) }
+func (*PublishNewsRequest) ProtoMessage()    {}
+func (*PublishNewsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ccd9286e45234ec8, []int{4}
 }
 
-func (m *PublishNewRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PublishNewRequest.Unmarshal(m, b)
+func (m *PublishNewsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PublishNewsRequest.Unmarshal(m, b)
 }
-func (m *PublishNewRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PublishNewRequest.Marshal(b, m, deterministic)
+func (m *PublishNewsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PublishNewsRequest.Marshal(b, m, deterministic)
 }
-func (m *PublishNewRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PublishNewRequest.Merge(m, src)
+func (m *PublishNewsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublishNewsRequest.Merge(m, src)
 }
-func (m *PublishNewRequest) XXX_Size() int {
-	return xxx_messageInfo_PublishNewRequest.Size(m)
+func (m *PublishNewsRequest) XXX_Size() int {
+	return xxx_messageInfo_PublishNewsRequest.Size(m)
 }
-func (m *PublishNewRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_PublishNewRequest.DiscardUnknown(m)
+func (m *PublishNewsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_PublishNewsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_PublishNewRequest proto.InternalMessageInfo
+var xxx_messageInfo_PublishNewsRequest proto.InternalMessageInfo
 
-func (m *PublishNewRequest) GetNew() *New {
+func (m *PublishNewsRequest) GetNews() *News {
 	if m != nil {
-		return m.New
+		return m.News
 	}
 	return nil
 }
 
-func (m *PublishNewRequest) GetGame() string {
+func (m *PublishNewsRequest) GetGame() string {
 	if m != nil {
 		return m.Game
 	}
 	return ""
 }
 
-type PublishNewResponse struct {
+type PublishNewsResponse struct {
 	Ok                   bool     `protobuf:"varint,1,opt,name=ok,proto3" json:"ok,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PublishNewResponse) Reset()         { *m = PublishNewResponse{} }
-func (m *PublishNewResponse) String() string { return proto.CompactTextString(m) }
-func (*PublishNewResponse) ProtoMessage()    {}
-func (*PublishNewResponse) Descriptor() ([]byte, []int) {
+func (m *PublishNewsResponse) Reset()         { *m = PublishNewsResponse{} }
+func (m *PublishNewsResponse) String() string { return proto.CompactTextString(m) }
+func (*PublishNewsResponse) ProtoMessage()    {}
+func (*PublishNewsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ccd9286e45234ec8, []int{5}
 }
 
-func (m *PublishNewResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PublishNewResponse.Unmarshal(m, b)
+func (m *PublishNewsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PublishNewsResponse.Unmarshal(m, b)
 }
-func (m *PublishNewResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PublishNewResponse.Marshal(b, m, deterministic)
+func (m *PublishNewsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PublishNewsResponse.Marshal(b, m, deterministic)
 }
-func (m *PublishNewResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PublishNewResponse.Merge(m, src)
+func (m *PublishNewsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublishNewsResponse.Merge(m, src)
 }
-func (m *PublishNewResponse) XXX_Size() int {
-	return xxx_messageInfo_PublishNewResponse.Size(m)
+func (m *PublishNewsResponse) XXX_Size() int {
+	return xxx_messageInfo_PublishNewsResponse.Size(m)
 }
-func (m *PublishNewResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_PublishNewResponse.DiscardUnknown(m)
+func (m *PublishNewsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_PublishNewsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_PublishNewResponse proto.InternalMessageInfo
+var xxx_messageInfo_PublishNewsResponse proto.InternalMessageInfo
 
-func (m *PublishNewResponse) GetOk() bool {
+func (m *PublishNewsResponse) GetOk() bool {
 	if m != nil {
 		return m.Ok
 	}
@@ -366,8 +366,8 @@ func (m *Game) GetCountry() string {
 	return ""
 }
 
-type New struct {
-	Type                 TypeNew  `protobuf:"varint,1,opt,name=type,proto3,enum=livescore.TypeNew" json:"type,omitempty"`
+type News struct {
+	Type                 TypeNews `protobuf:"varint,1,opt,name=type,proto3,enum=livescore.TypeNews" json:"type,omitempty"`
 	Team                 string   `protobuf:"bytes,2,opt,name=team,proto3" json:"team,omitempty"`
 	Min                  int32    `protobuf:"varint,3,opt,name=min,proto3" json:"min,omitempty"`
 	Details              string   `protobuf:"bytes,4,opt,name=details,proto3" json:"details,omitempty"`
@@ -376,53 +376,53 @@ type New struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *New) Reset()         { *m = New{} }
-func (m *New) String() string { return proto.CompactTextString(m) }
-func (*New) ProtoMessage()    {}
-func (*New) Descriptor() ([]byte, []int) {
+func (m *News) Reset()         { *m = News{} }
+func (m *News) String() string { return proto.CompactTextString(m) }
+func (*News) ProtoMessage()    {}
+func (*News) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ccd9286e45234ec8, []int{7}
 }
 
-func (m *New) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_New.Unmarshal(m, b)
+func (m *News) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_News.Unmarshal(m, b)
 }
-func (m *New) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_New.Marshal(b, m, deterministic)
+func (m *News) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_News.Marshal(b, m, deterministic)
 }
-func (m *New) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_New.Merge(m, src)
+func (m *News) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_News.Merge(m, src)
 }
-func (m *New) XXX_Size() int {
-	return xxx_messageInfo_New.Size(m)
+func (m *News) XXX_Size() int {
+	return xxx_messageInfo_News.Size(m)
 }
-func (m *New) XXX_DiscardUnknown() {
-	xxx_messageInfo_New.DiscardUnknown(m)
+func (m *News) XXX_DiscardUnknown() {
+	xxx_messageInfo_News.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_New proto.InternalMessageInfo
+var xxx_messageInfo_News proto.InternalMessageInfo
 
-func (m *New) GetType() TypeNew {
+func (m *News) GetType() TypeNews {
 	if m != nil {
 		return m.Type
 	}
-	return TypeNew_UNKOWN
+	return TypeNews_UNKOWN
 }
 
-func (m *New) GetTeam() string {
+func (m *News) GetTeam() string {
 	if m != nil {
 		return m.Team
 	}
 	return ""
 }
 
-func (m *New) GetMin() int32 {
+func (m *News) GetMin() int32 {
 	if m != nil {
 		return m.Min
 	}
 	return 0
 }
 
-func (m *New) GetDetails() string {
+func (m *News) GetDetails() string {
 	if m != nil {
 		return m.Details
 	}
@@ -430,51 +430,51 @@ func (m *New) GetDetails() string {
 }
 
 func init() {
-	proto.RegisterEnum("livescore.TypeNew", TypeNew_name, TypeNew_value)
+	proto.RegisterEnum("livescore.TypeNews", TypeNews_name, TypeNews_value)
 	proto.RegisterType((*GetGamesListRequest)(nil), "livescore.GetGamesListRequest")
 	proto.RegisterType((*GetGamesListResponse)(nil), "livescore.GetGamesListResponse")
 	proto.RegisterType((*GetNewsGameRequest)(nil), "livescore.GetNewsGameRequest")
 	proto.RegisterType((*GetNewsGameResponse)(nil), "livescore.GetNewsGameResponse")
-	proto.RegisterType((*PublishNewRequest)(nil), "livescore.PublishNewRequest")
-	proto.RegisterType((*PublishNewResponse)(nil), "livescore.PublishNewResponse")
+	proto.RegisterType((*PublishNewsRequest)(nil), "livescore.PublishNewsRequest")
+	proto.RegisterType((*PublishNewsResponse)(nil), "livescore.PublishNewsResponse")
 	proto.RegisterType((*Game)(nil), "livescore.Game")
-	proto.RegisterType((*New)(nil), "livescore.New")
+	proto.RegisterType((*News)(nil), "livescore.News")
 }
 
 func init() { proto.RegisterFile("livescore.proto", fileDescriptor_ccd9286e45234ec8) }
 
 var fileDescriptor_ccd9286e45234ec8 = []byte{
 	// 474 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x53, 0x4d, 0x6f, 0xd3, 0x40,
-	0x10, 0xc5, 0x1f, 0xf9, 0x1a, 0x47, 0x89, 0x19, 0x90, 0xb0, 0x22, 0x52, 0x82, 0x05, 0xa8, 0x42,
-	0xa2, 0xa0, 0x70, 0xe0, 0xc4, 0xa1, 0x22, 0x1f, 0x58, 0x58, 0x36, 0x72, 0x81, 0xaa, 0xa7, 0x28,
-	0x4d, 0x56, 0x60, 0xd5, 0xc9, 0x06, 0xef, 0xa6, 0x51, 0x7e, 0x39, 0x57, 0x34, 0x9b, 0x35, 0x71,
-	0xa8, 0xa2, 0xde, 0x76, 0xde, 0x1b, 0xbf, 0x37, 0xa3, 0x79, 0x86, 0x76, 0x96, 0xde, 0x32, 0x31,
-	0xe3, 0x39, 0x3b, 0x5b, 0xe5, 0x5c, 0x72, 0x6c, 0xfc, 0x03, 0xfc, 0xb7, 0xf0, 0x68, 0xcc, 0xe4,
-	0x78, 0xba, 0x60, 0x22, 0x4c, 0x85, 0x4c, 0xd8, 0xef, 0x35, 0x13, 0x12, 0x3d, 0xa8, 0xcd, 0xf8,
-	0x7a, 0x29, 0xf3, 0xad, 0x67, 0xf4, 0x8c, 0xd3, 0x46, 0x52, 0x94, 0xfe, 0x47, 0x78, 0x7c, 0xf8,
-	0x81, 0x58, 0xf1, 0xa5, 0x60, 0xf8, 0x12, 0x2a, 0x3f, 0x09, 0xf4, 0x8c, 0x9e, 0x75, 0xea, 0xf4,
-	0xdb, 0x67, 0x7b, 0x53, 0x6a, 0x4e, 0x76, 0xac, 0xff, 0x06, 0x70, 0xcc, 0x64, 0xc4, 0x36, 0x42,
-	0xa1, 0xda, 0xee, 0x09, 0xd4, 0x88, 0x9e, 0xa4, 0x73, 0x6d, 0x57, 0xa5, 0x32, 0x98, 0xfb, 0x1f,
-	0xd4, 0x78, 0xfb, 0x76, 0x6d, 0xd6, 0x03, 0x6b, 0xc9, 0x36, 0xaa, 0xd7, 0xe9, 0xb7, 0x4a, 0x56,
-	0x11, 0xdb, 0x24, 0x44, 0xf9, 0x01, 0x3c, 0xfc, 0xba, 0xbe, 0xce, 0x52, 0xf1, 0x8b, 0x20, 0x6d,
-	0x73, 0xef, 0x67, 0x88, 0x60, 0x93, 0xb3, 0x67, 0xaa, 0x29, 0xd4, 0xdb, 0x7f, 0x01, 0x58, 0x96,
-	0xd2, 0x23, 0xb4, 0xc0, 0xe4, 0x37, 0x4a, 0xaa, 0x9e, 0x98, 0xfc, 0xc6, 0xcf, 0xc1, 0xa6, 0x11,
-	0x09, 0x0f, 0x8a, 0x2d, 0xcc, 0x60, 0x8e, 0x5d, 0x00, 0xc9, 0xa6, 0x8b, 0x49, 0xc6, 0x67, 0xd3,
-	0x4c, 0xeb, 0x36, 0x08, 0x09, 0x09, 0xc0, 0xe7, 0xd0, 0x54, 0xf4, 0x6d, 0x2a, 0x52, 0xc9, 0x73,
-	0xcf, 0x52, 0x0d, 0x0e, 0x61, 0x3f, 0x76, 0x50, 0xf9, 0x16, 0xf6, 0xe1, 0x2d, 0x16, 0x60, 0x45,
-	0x6c, 0x83, 0xaf, 0xc0, 0x96, 0xdb, 0x15, 0x53, 0xa6, 0xad, 0x3e, 0x96, 0xf6, 0xfa, 0xb6, 0x5d,
-	0x31, 0x1a, 0x5a, 0xf1, 0xb4, 0x1c, 0xe9, 0x16, 0xcb, 0xd1, 0x1b, 0x5d, 0xb0, 0x16, 0xe9, 0x52,
-	0xd9, 0x56, 0x12, 0x7a, 0x92, 0xdd, 0x9c, 0xc9, 0x69, 0x9a, 0x89, 0xc2, 0x4e, 0x97, 0xaf, 0xaf,
-	0xa0, 0xa6, 0x05, 0x11, 0xa0, 0xfa, 0x3d, 0xfa, 0x12, 0x5f, 0x46, 0xee, 0x03, 0xac, 0x83, 0x3d,
-	0x8e, 0xcf, 0x43, 0xd7, 0x40, 0x07, 0x6a, 0xf1, 0x68, 0x74, 0x11, 0x0c, 0x86, 0xae, 0x89, 0x6d,
-	0x70, 0xae, 0x86, 0x61, 0x18, 0x5f, 0x4e, 0x3e, 0x9d, 0x27, 0x03, 0xd7, 0xc2, 0x26, 0xd4, 0x93,
-	0xe1, 0x60, 0x57, 0xd9, 0x54, 0x8d, 0x82, 0x28, 0xb8, 0xf8, 0x3c, 0x1c, 0xb8, 0x95, 0xfe, 0x1f,
-	0x03, 0x1a, 0x61, 0x31, 0x36, 0xc6, 0xd0, 0x2c, 0x67, 0x0c, 0x4f, 0xca, 0x61, 0xba, 0x9b, 0xd6,
-	0xce, 0xb3, 0xa3, 0xbc, 0x3e, 0x56, 0x00, 0xb0, 0x3f, 0x21, 0x3e, 0x2d, 0xb5, 0xdf, 0x09, 0x49,
-	0xa7, 0x7b, 0x84, 0xd5, 0x52, 0x11, 0x38, 0xa5, 0x44, 0x62, 0xf7, 0xd0, 0xfa, 0xbf, 0x60, 0x77,
-	0x4e, 0x8e, 0xd1, 0x3b, 0xb5, 0x77, 0xc6, 0x75, 0x55, 0xfd, 0x92, 0xef, 0xff, 0x06, 0x00, 0x00,
-	0xff, 0xff, 0x6b, 0xfb, 0x17, 0x15, 0xa5, 0x03, 0x00, 0x00,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x53, 0x5d, 0x8b, 0xd3, 0x50,
+	0x10, 0x35, 0x6d, 0xfa, 0x35, 0x29, 0xdb, 0x30, 0x15, 0x0c, 0x85, 0xad, 0x6b, 0x64, 0x71, 0x11,
+	0x5c, 0xa5, 0xbe, 0x09, 0x3e, 0x2c, 0xf6, 0xc3, 0x60, 0x4c, 0x24, 0x55, 0x17, 0x7d, 0x29, 0xdd,
+	0xf6, 0xa2, 0x61, 0xd3, 0xde, 0x9a, 0x7b, 0xdb, 0xa5, 0x7f, 0xdd, 0x27, 0x99, 0x9b, 0x1b, 0x37,
+	0xa1, 0x14, 0xf6, 0xed, 0xce, 0x99, 0x93, 0x73, 0xce, 0x30, 0x13, 0xe8, 0x24, 0xf1, 0x8e, 0x89,
+	0x05, 0x4f, 0xd9, 0xe5, 0x26, 0xe5, 0x92, 0x63, 0xeb, 0x3f, 0xe0, 0xbe, 0x86, 0xee, 0x84, 0xc9,
+	0xc9, 0x7c, 0xc5, 0x84, 0x1f, 0x0b, 0x19, 0xb1, 0x3f, 0x5b, 0x26, 0x24, 0x3a, 0xd0, 0x58, 0xf0,
+	0xed, 0x5a, 0xa6, 0x7b, 0xc7, 0x38, 0x33, 0x2e, 0x5a, 0x51, 0x5e, 0xba, 0xef, 0xe1, 0x71, 0xf9,
+	0x03, 0xb1, 0xe1, 0x6b, 0xc1, 0xf0, 0x1c, 0x6a, 0xbf, 0x08, 0x74, 0x8c, 0xb3, 0xea, 0x85, 0x35,
+	0xe8, 0x5c, 0xde, 0x9b, 0x12, 0x39, 0xca, 0xba, 0xee, 0x2b, 0xc0, 0x09, 0x93, 0x01, 0xbb, 0x13,
+	0x0a, 0xd5, 0x76, 0x4f, 0xa0, 0x41, 0xed, 0x59, 0xbc, 0xd4, 0x76, 0x75, 0x2a, 0xbd, 0xa5, 0xfb,
+	0x4e, 0xc5, 0xbb, 0xa7, 0x6b, 0xb3, 0xe7, 0x60, 0xae, 0xd9, 0x9d, 0x50, 0xe4, 0xb2, 0x17, 0x51,
+	0x23, 0xd5, 0x74, 0x3f, 0x03, 0x7e, 0xd9, 0xde, 0x24, 0xb1, 0xf8, 0xad, 0x40, 0x6d, 0xf5, 0x90,
+	0x4f, 0x11, 0xc1, 0xa4, 0x00, 0x4e, 0x45, 0x85, 0x51, 0x6f, 0xf7, 0x1c, 0xba, 0x25, 0x39, 0x1d,
+	0xe5, 0x04, 0x2a, 0xfc, 0x56, 0xa9, 0x35, 0xa3, 0x0a, 0xbf, 0x75, 0x53, 0x30, 0x29, 0x2a, 0xe1,
+	0x5e, 0x3e, 0x4d, 0xc5, 0x5b, 0xe2, 0x29, 0x80, 0x64, 0xf3, 0xd5, 0x2c, 0xe1, 0x8b, 0x79, 0xa2,
+	0x85, 0x5b, 0x84, 0xf8, 0x04, 0xe0, 0x33, 0x68, 0xab, 0xf6, 0x2e, 0x16, 0xb1, 0xe4, 0xa9, 0x53,
+	0x55, 0x04, 0x8b, 0xb0, 0xef, 0x19, 0x54, 0xdc, 0x89, 0x59, 0xde, 0x09, 0x07, 0x93, 0x32, 0xe1,
+	0x0b, 0x30, 0xe5, 0x7e, 0xc3, 0x94, 0xeb, 0xc9, 0xa0, 0x5b, 0x98, 0xed, 0xeb, 0x7e, 0xc3, 0xb2,
+	0xf9, 0x88, 0x40, 0xf3, 0x91, 0x72, 0x3e, 0x1f, 0xbd, 0xd1, 0x86, 0xea, 0x2a, 0x5e, 0x2b, 0xe3,
+	0x5a, 0x44, 0x4f, 0x32, 0x5c, 0x32, 0x39, 0x8f, 0x13, 0x91, 0x1b, 0xea, 0xf2, 0xe5, 0x4f, 0x68,
+	0xe6, 0x8a, 0x08, 0x50, 0xff, 0x16, 0x7c, 0x0a, 0xaf, 0x03, 0xfb, 0x11, 0x36, 0xc1, 0x9c, 0x84,
+	0x57, 0xbe, 0x6d, 0xa0, 0x05, 0x8d, 0x70, 0x3c, 0x9e, 0x7a, 0xc3, 0x91, 0x5d, 0xc1, 0x0e, 0x58,
+	0x3f, 0x46, 0xbe, 0x1f, 0x5e, 0xcf, 0x3e, 0x5c, 0x45, 0x43, 0xbb, 0x8a, 0x6d, 0x68, 0x46, 0xa3,
+	0x61, 0x56, 0x99, 0x54, 0x8d, 0xbd, 0xc0, 0x9b, 0x7e, 0x1c, 0x0d, 0xed, 0xda, 0xe0, 0xaf, 0x01,
+	0x2d, 0x3f, 0xde, 0xb1, 0x29, 0x05, 0xc7, 0x10, 0xda, 0xc5, 0x73, 0xc3, 0x7e, 0xf1, 0xae, 0x0e,
+	0x0f, 0xb7, 0xf7, 0xf4, 0x68, 0x5f, 0xef, 0xcb, 0x07, 0xab, 0xb0, 0x46, 0x3c, 0x2d, 0xf0, 0x0f,
+	0xaf, 0xa5, 0xd7, 0x3f, 0xd6, 0xd6, 0x6a, 0x01, 0x58, 0x85, 0xfb, 0x2c, 0xa9, 0x1d, 0x9e, 0x79,
+	0xaf, 0x7f, 0xac, 0x9d, 0xa9, 0xbd, 0x31, 0x6e, 0xea, 0xea, 0x07, 0x7d, 0xfb, 0x2f, 0x00, 0x00,
+	0xff, 0xff, 0xb1, 0x13, 0x8f, 0xcf, 0xb3, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -485,47 +485,47 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// LivescoreClient is the client API for Livescore service.
+// LiveScoreClient is the client API for LiveScore service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type LivescoreClient interface {
+type LiveScoreClient interface {
 	GetGamesList(ctx context.Context, in *GetGamesListRequest, opts ...grpc.CallOption) (*GetGamesListResponse, error)
-	PublishNew(ctx context.Context, in *PublishNewRequest, opts ...grpc.CallOption) (*PublishNewResponse, error)
-	GetNewsGame(ctx context.Context, in *GetNewsGameRequest, opts ...grpc.CallOption) (Livescore_GetNewsGameClient, error)
+	PublishNews(ctx context.Context, in *PublishNewsRequest, opts ...grpc.CallOption) (*PublishNewsResponse, error)
+	GetNewsGame(ctx context.Context, in *GetNewsGameRequest, opts ...grpc.CallOption) (LiveScore_GetNewsGameClient, error)
 }
 
-type livescoreClient struct {
+type liveScoreClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewLivescoreClient(cc *grpc.ClientConn) LivescoreClient {
-	return &livescoreClient{cc}
+func NewLiveScoreClient(cc *grpc.ClientConn) LiveScoreClient {
+	return &liveScoreClient{cc}
 }
 
-func (c *livescoreClient) GetGamesList(ctx context.Context, in *GetGamesListRequest, opts ...grpc.CallOption) (*GetGamesListResponse, error) {
+func (c *liveScoreClient) GetGamesList(ctx context.Context, in *GetGamesListRequest, opts ...grpc.CallOption) (*GetGamesListResponse, error) {
 	out := new(GetGamesListResponse)
-	err := c.cc.Invoke(ctx, "/livescore.Livescore/GetGamesList", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/livescore.LiveScore/GetGamesList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *livescoreClient) PublishNew(ctx context.Context, in *PublishNewRequest, opts ...grpc.CallOption) (*PublishNewResponse, error) {
-	out := new(PublishNewResponse)
-	err := c.cc.Invoke(ctx, "/livescore.Livescore/PublishNew", in, out, opts...)
+func (c *liveScoreClient) PublishNews(ctx context.Context, in *PublishNewsRequest, opts ...grpc.CallOption) (*PublishNewsResponse, error) {
+	out := new(PublishNewsResponse)
+	err := c.cc.Invoke(ctx, "/livescore.LiveScore/PublishNews", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *livescoreClient) GetNewsGame(ctx context.Context, in *GetNewsGameRequest, opts ...grpc.CallOption) (Livescore_GetNewsGameClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Livescore_serviceDesc.Streams[0], "/livescore.Livescore/GetNewsGame", opts...)
+func (c *liveScoreClient) GetNewsGame(ctx context.Context, in *GetNewsGameRequest, opts ...grpc.CallOption) (LiveScore_GetNewsGameClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LiveScore_serviceDesc.Streams[0], "/livescore.LiveScore/GetNewsGame", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &livescoreGetNewsGameClient{stream}
+	x := &liveScoreGetNewsGameClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -535,16 +535,16 @@ func (c *livescoreClient) GetNewsGame(ctx context.Context, in *GetNewsGameReques
 	return x, nil
 }
 
-type Livescore_GetNewsGameClient interface {
+type LiveScore_GetNewsGameClient interface {
 	Recv() (*GetNewsGameResponse, error)
 	grpc.ClientStream
 }
 
-type livescoreGetNewsGameClient struct {
+type liveScoreGetNewsGameClient struct {
 	grpc.ClientStream
 }
 
-func (x *livescoreGetNewsGameClient) Recv() (*GetNewsGameResponse, error) {
+func (x *liveScoreGetNewsGameClient) Recv() (*GetNewsGameResponse, error) {
 	m := new(GetNewsGameResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -552,105 +552,105 @@ func (x *livescoreGetNewsGameClient) Recv() (*GetNewsGameResponse, error) {
 	return m, nil
 }
 
-// LivescoreServer is the server API for Livescore service.
-type LivescoreServer interface {
+// LiveScoreServer is the server API for LiveScore service.
+type LiveScoreServer interface {
 	GetGamesList(context.Context, *GetGamesListRequest) (*GetGamesListResponse, error)
-	PublishNew(context.Context, *PublishNewRequest) (*PublishNewResponse, error)
-	GetNewsGame(*GetNewsGameRequest, Livescore_GetNewsGameServer) error
+	PublishNews(context.Context, *PublishNewsRequest) (*PublishNewsResponse, error)
+	GetNewsGame(*GetNewsGameRequest, LiveScore_GetNewsGameServer) error
 }
 
-// UnimplementedLivescoreServer can be embedded to have forward compatible implementations.
-type UnimplementedLivescoreServer struct {
+// UnimplementedLiveScoreServer can be embedded to have forward compatible implementations.
+type UnimplementedLiveScoreServer struct {
 }
 
-func (*UnimplementedLivescoreServer) GetGamesList(ctx context.Context, req *GetGamesListRequest) (*GetGamesListResponse, error) {
+func (*UnimplementedLiveScoreServer) GetGamesList(ctx context.Context, req *GetGamesListRequest) (*GetGamesListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetGamesList not implemented")
 }
-func (*UnimplementedLivescoreServer) PublishNew(ctx context.Context, req *PublishNewRequest) (*PublishNewResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PublishNew not implemented")
+func (*UnimplementedLiveScoreServer) PublishNews(ctx context.Context, req *PublishNewsRequest) (*PublishNewsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PublishNews not implemented")
 }
-func (*UnimplementedLivescoreServer) GetNewsGame(req *GetNewsGameRequest, srv Livescore_GetNewsGameServer) error {
+func (*UnimplementedLiveScoreServer) GetNewsGame(req *GetNewsGameRequest, srv LiveScore_GetNewsGameServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetNewsGame not implemented")
 }
 
-func RegisterLivescoreServer(s *grpc.Server, srv LivescoreServer) {
-	s.RegisterService(&_Livescore_serviceDesc, srv)
+func RegisterLiveScoreServer(s *grpc.Server, srv LiveScoreServer) {
+	s.RegisterService(&_LiveScore_serviceDesc, srv)
 }
 
-func _Livescore_GetGamesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _LiveScore_GetGamesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetGamesListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LivescoreServer).GetGamesList(ctx, in)
+		return srv.(LiveScoreServer).GetGamesList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/livescore.Livescore/GetGamesList",
+		FullMethod: "/livescore.LiveScore/GetGamesList",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LivescoreServer).GetGamesList(ctx, req.(*GetGamesListRequest))
+		return srv.(LiveScoreServer).GetGamesList(ctx, req.(*GetGamesListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Livescore_PublishNew_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PublishNewRequest)
+func _LiveScore_PublishNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PublishNewsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LivescoreServer).PublishNew(ctx, in)
+		return srv.(LiveScoreServer).PublishNews(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/livescore.Livescore/PublishNew",
+		FullMethod: "/livescore.LiveScore/PublishNews",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LivescoreServer).PublishNew(ctx, req.(*PublishNewRequest))
+		return srv.(LiveScoreServer).PublishNews(ctx, req.(*PublishNewsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Livescore_GetNewsGame_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _LiveScore_GetNewsGame_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(GetNewsGameRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LivescoreServer).GetNewsGame(m, &livescoreGetNewsGameServer{stream})
+	return srv.(LiveScoreServer).GetNewsGame(m, &liveScoreGetNewsGameServer{stream})
 }
 
-type Livescore_GetNewsGameServer interface {
+type LiveScore_GetNewsGameServer interface {
 	Send(*GetNewsGameResponse) error
 	grpc.ServerStream
 }
 
-type livescoreGetNewsGameServer struct {
+type liveScoreGetNewsGameServer struct {
 	grpc.ServerStream
 }
 
-func (x *livescoreGetNewsGameServer) Send(m *GetNewsGameResponse) error {
+func (x *liveScoreGetNewsGameServer) Send(m *GetNewsGameResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _Livescore_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "livescore.Livescore",
-	HandlerType: (*LivescoreServer)(nil),
+var _LiveScore_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "livescore.LiveScore",
+	HandlerType: (*LiveScoreServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetGamesList",
-			Handler:    _Livescore_GetGamesList_Handler,
+			Handler:    _LiveScore_GetGamesList_Handler,
 		},
 		{
-			MethodName: "PublishNew",
-			Handler:    _Livescore_PublishNew_Handler,
+			MethodName: "PublishNews",
+			Handler:    _LiveScore_PublishNews_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "GetNewsGame",
-			Handler:       _Livescore_GetNewsGame_Handler,
+			Handler:       _LiveScore_GetNewsGame_Handler,
 			ServerStreams: true,
 		},
 	},

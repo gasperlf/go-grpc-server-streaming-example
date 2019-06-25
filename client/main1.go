@@ -25,7 +25,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	cli := pb.NewLivescoreClient(conn) // Creamos nuestro servicios / stub gRPC
+	cli := pb.NewLiveScoreClient(conn) // Creamos nuestro servicios / stub gRPC
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second) // Definimos contexto con timeout
 	defer cancel()
