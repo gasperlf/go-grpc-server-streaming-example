@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package livescore;
+
+service Livescore {
+    rpc GetGamesList (GetGamesListRequest) returns (GetGamesListResponse);
+    rpc PublishNew (PublishNewRequest) returns (PublishNewResponse);
+    rpc GetNewsGame (GetNewsGameRequest) returns (stream GetNewsGameResponse);
+}
+
+message GetGamesListRequest {
+    string country = 1;
+}
+
+message GetGamesListResponse {
+    repeated Game games = 1;
+}
+
+message GetNewsGameRequest {
+    string game_id = 1;
+}
+
+message GetNewsGameResponse {
+    New new = 1;
+}
+
+message PublishNewRequest {
+    New new = 1;
+    string game = 2;
+}
+
+message PublishNewResponse {
+    bool ok = 1;
+}
+
+// Genreic
+
+enum TypeNew {
+    UNKOWN = 0;
+    GOAL = 1;
+    OFFSIDE = 2;
+    YELLOW_CARD = 3;
+    RED_CARD = 4;
+    FINISHED = 5;
+}
+
+message Game {
+    string Id = 1;
+    string team_local = 2;
+    string team_visitor = 3;
+    string country = 4;
+}
+
+message New {
+    TypeNew type = 1;
+    string team = 2;
+    int32 min = 3;
+    string details = 4;
+}
