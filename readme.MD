@@ -11,11 +11,11 @@ Ejecuta `go run server/maing.go`, el cual será el encargado de recibir *actuali
 
 ### Cliente (Suscriptor)
 
-Ejecuta `go run client/client2.go` en tantas terminales como quieras y pueden ser en tiempo diferentes, es decir, después de que otras ya hayan recibido alguna actualización.
+Ejecuta `go run client/client2.go -game=<id-game>` en tantas terminales como quieras y pueden ser en tiempo diferentes, es decir, después de que otras ya hayan recibido alguna actualización.
 
 ### Cliente (Actualizador)
 
-Ejecuta `go run/client3.go -args` para enviar una nueva actualización..
+Ejecuta `go run/client3.go -game=<id-game> -team=<team> -min=<min>` para enviar una nueva actualización..
 
 ## Authors
 * Santiago Yepes Tamayo <zetogk@gmail.com>
