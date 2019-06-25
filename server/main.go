@@ -21,7 +21,7 @@ var newsGames = make(map[string][]*pb.New) // List of news for each game
 var indexNewGames = make(map[string]int)   // Index of the last new
 var indexNewGamesByConn = make([]int, 1)   // Array of Index. For each connection.
 
-type server struct{} // Definir un struct donde mplementaremos todos los métodos
+type server struct{} // Definir una interfaz donde implementaremos todos los métodos de nuestra definición
 
 func (s *server) GetGamesList(ctx context.Context, in *pb.GetGamesListRequest) (*pb.GetGamesListResponse, error) {
 
@@ -101,17 +101,17 @@ func main() {
 	indexNewGames["003"] = -1
 	newsGames["003"] = append(newsGames["003"], &pb.New{Type: 0, Min: 0, Team: "", Details: "Game is starting"})
 
-	listener, err := net.Listen("tcp", port)
+	listener, err := net.Listen("tcp", port) // Definimos que puerto usaremos para epxoner nuestro servicio
 
 	if err != nil {
 		log.Fatalf("Error al exponer el puerto %v ", err)
 	}
 
-	s := grpc.NewServer()
-	pb.RegisterLivescoreServer(s, &server{})
+	s := grpc.NewServer()                    // Creamos servidor gRPC
+	pb.RegisterLivescoreServer(s, &server{}) // Registramos nuestro servidor para Livescore pasando los métodos implementados
 
 	log.Printf("Server listening by %v ", port)
-	err = s.Serve(listener)
+	err = s.Serve(listener) // Exponemos nuestros servicios
 	if err != nil {
 		log.Fatalf("Error al iniciar servidor %v ", err)
 	}

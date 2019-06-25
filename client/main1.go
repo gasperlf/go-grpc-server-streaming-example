@@ -16,7 +16,7 @@ const (
 
 func main() {
 
-	conn, err := grpc.Dial(addressCnx, grpc.WithInsecure())
+	conn, err := grpc.Dial(addressCnx, grpc.WithInsecure()) // Establecemos el canal para comunicarnos
 
 	if err != nil {
 
@@ -25,12 +25,12 @@ func main() {
 	}
 	defer conn.Close()
 
-	cli := pb.NewLivescoreClient(conn)
+	cli := pb.NewLivescoreClient(conn) // Creamos nuestro servicios / stub gRPC
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second) // Definimos contexto con timeout
 	defer cancel()
 
-	r, err := cli.GetGamesList(ctx, &pb.GetGamesListRequest{Country: "CO"})
+	r, err := cli.GetGamesList(ctx, &pb.GetGamesListRequest{Country: "CO"}) // Usamos nuestro cliente
 
 	if err != nil {
 		log.Printf("Error en la petición %v ", err)

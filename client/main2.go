@@ -40,7 +40,7 @@ func main() {
 	log.Printf("Will be subscribed to game: ", game)
 	newReq := &pb.GetNewsGameRequest{GameId: game}
 
-	stream, err := cli.GetNewsGame(ctx, newReq)
+	stream, err := cli.GetNewsGame(ctx, newReq) // Creamos nuestro cliente de streaming
 
 	if err != nil {
 		log.Printf("Error en la petición %v ", err)
@@ -48,7 +48,7 @@ func main() {
 
 	for {
 
-		new, err := stream.Recv()
+		new, err := stream.Recv() // Recibimos los datos que lleguen dle servidor
 
 		if err != nil {
 
