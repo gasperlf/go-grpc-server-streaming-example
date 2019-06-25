@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"net"
+	"time"
 
 	"google.golang.org/grpc"
 	pb "zetoslab.com/livescore/livescore"
@@ -18,6 +19,7 @@ var indexNewToSend = -1 */
 var games []*pb.Game                       // List of availables games
 var newsGames = make(map[string][]*pb.New) // List of news for each game
 var indexNewGames = make(map[string]int)   // Index of the last new
+var indexNewGamesByConn = make([]int, 1)   // Array of Index. For each connection.
 
 type server struct{} // Definir un struct donde mplementaremos todos los métodos
 
@@ -45,20 +47,32 @@ func (s *server) PublishNew(ctx context.Context, in *pb.PublishNewRequest) (*pb.
 
 func (s *server) GetNewsGame(in *pb.GetNewsGameRequest, stream pb.Livescore_GetNewsGameServer) error {
 
+	log.Printf("Connection to game %v ", in.GameId)
+	indexNewGamesByConn = append(indexNewGamesByConn, indexNewGames[in.GameId])
+	internalIndex := len(indexNewGamesByConn) - 1
+
+	// log.Printf("indexNewGamesByConn: %v ", indexNewGamesByConn)
+
 	for {
 
 		if len(newsGames[in.GameId]) > 0 {
 
-			log.Printf("len(newsGames[%v]): %v", in.GameId, len(newsGames[in.GameId]))
+			time.Sleep(2 * time.Second)
 			if len(newsGames[in.GameId]) > indexNewGames[in.GameId]+1 {
 
-				indexNewGames[in.GameId]++
-				err := stream.Send(&pb.GetNewsGameResponse{New: newsGames[in.GameId][indexNewGames[in.GameId]]})
+				indexNewGames[in.GameId]++ // Updating the general index of a new-game
+
+			}
+
+			if len(newsGames[in.GameId]) > indexNewGamesByConn[internalIndex]+1 {
+
+				indexNewGamesByConn[internalIndex]++
+				err := stream.Send(&pb.GetNewsGameResponse{New: newsGames[in.GameId][indexNewGamesByConn[internalIndex]]})
 				if err != nil {
 					log.Printf("Error sending new %v ", err)
 				}
 
-				if newsGames[in.GameId][indexNewGames[in.GameId]].Type == 5 {
+				if newsGames[in.GameId][indexNewGamesByConn[internalIndex]].Type == 5 {
 					log.Printf("Streaming connection has finished because the match has finished.")
 					break
 				}
